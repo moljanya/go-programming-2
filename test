@@ -1,1 +1,5 @@
-test
+git push --set-upstream origin router
+Username for 'https://github.com': moljanya
+Password for 'https://moljanya@github.com': 
+remote: Permission to shifteducation/go-programming-2.git denied to moljanya.
+fatal: «https://github.com/shifteducation/go-programming-2.git/» недоступно: The requested URL returned error: 403
