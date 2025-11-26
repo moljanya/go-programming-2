@@ -4,6 +4,11 @@ import (
 	"encoding/json"
 	"errors"
 	"fmt"
+	"net/http"
+	"net/http/httptest"
+	"strings"
+	"testing"
+
 	"github.com/google/uuid"
 	"github.com/shifteducation/user-service/internal/custom_errors"
 	"github.com/shifteducation/user-service/internal/dto"
@@ -11,10 +16,6 @@ import (
 	"github.com/shifteducation/user-service/internal/models"
 	"github.com/stretchr/testify/assert"
 	"go.uber.org/mock/gomock"
-	"net/http"
-	"net/http/httptest"
-	"strings"
-	"testing"
 )
 
 func TestGetAllUsersOK(t *testing.T) {

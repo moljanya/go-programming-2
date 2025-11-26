@@ -2,11 +2,11 @@ package repositories
 
 import (
 	"context"
+
 	"github.com/google/uuid"
 	"github.com/shifteducation/user-service/internal/entities"
 	"gorm.io/gorm"
 	"gorm.io/gorm/clause"
-	"log"
 )
 
 type UserPostgresRepository struct {
@@ -46,11 +46,29 @@ func (r UserPostgresRepository) GetAll(ctx context.Context) ([]entities.User, er
 }
 
 func (r UserPostgresRepository) Update(ctx context.Context, user entities.User) error {
-	log.Print("Not implemented")
+	//log.Print("Not implemented")
+	result, err := gorm.G[entities.User](r.db).Where("id = ?", user.Id).Updates(ctx, user)
+	if err != nil {
+		return err
+	}
+
+	if result == 0 {
+		return gorm.ErrRecordNotFound
+	}
+
 	return nil
 }
 
 func (r UserPostgresRepository) Delete(ctx context.Context, userId uuid.UUID) error {
-	log.Print("Not implemented")
+	//log.Print("Not implemented")
+	result, err := gorm.G[entities.User](r.db).Where("id = ?", userId).Delete(ctx)
+	if err != nil {
+		return err
+	}
+
+	if result == 0 {
+		return gorm.ErrRecordNotFound
+	}
+
 	return nil
 }
